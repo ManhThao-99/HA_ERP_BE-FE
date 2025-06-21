@@ -1,0 +1,99 @@
+<div class="card">
+  <div class="card-header">
+    <div class="row">
+      <div class="col col-md-6">
+        <h5 class="card-title">
+          {{ '::Menu:Organization' | abpLocalization }}
+        </h5>
+      </div>
+      <div class="text-end col col-md-6"></div>
+    </div>
+  </div>
+
+  <div class="card-body">
+    <div class="mb-3 d-flex justify-content-between align-items-center">
+      <div>
+        <button class="btn btn-success me-2" (click)="createOrganization()" [disabled]="selectedRows.length > 0">
+          <i class="fa fa-plus me-1"></i>CREATE
+        </button>
+        <button class="btn btn-primary me-2" (click)="editOrganization()" [disabled]="selectedRows.length !== 1">
+          <i class="fa fa-pen me-1"></i>UPDATE
+        </button>
+        <button class="btn btn-danger me-2" (click)="delete()" [disabled]="selectedRows.length === 0">
+          <i class="fa fa-trash me-1"></i>DELETE
+        </button>
+        <button class="btn btn-warning me-2" (click)="view()" [disabled]="selectedRows.length !== 1">
+          <i class="fa fa-eye me-1"></i>DETAIL
+        </button>
+      </div>
+    </div>
+    <ngx-datatable
+      [rows]="organization.items"
+      [count]="organization.totalCount"
+      [list]="list"
+      default
+      [selectionType]="'checkbox'"
+      [(selected)]="selectedRows"
+      [headerHeight]="50"
+      [rowHeight]="'auto'"
+    >
+    <ngx-datatable-column
+    [width]="50"
+    [canAutoResize]="false"
+    [sortable]="false"
+    [draggable]="false"
+    [resizeable]="false"
+    [headerCheckboxable]="true"
+    [checkboxable]="true"
+  >
+  </ngx-datatable-column>
+      <ngx-datatable-column [name]="'::Code' | abpLocalization" prop="code"></ngx-datatable-column>
+      <ngx-datatable-column [name]="'::Name' | abpLocalization" prop="name"></ngx-datatable-column>
+    </ngx-datatable>
+  </div>
+</div>
+
+<abp-modal [(visible)]="isModalOpen">
+  <ng-template #abpHeader>
+    <h3>{{ (selectedOrganization.id ? 'Edit' : 'New Organization') }}</h3>
+  </ng-template>
+
+  <ng-template #abpBody>
+  <form [formGroup]="form" (ngSubmit)="save()">
+    <div class="mt-2">
+      <label>Code</label><span> * </span>
+      <input type="text" class="form-control" formControlName="code" />
+    </div>
+
+    <div class="mt-2">
+      <label>Name</label><span> * </span>
+      <input type="text" class="form-control" formControlName="name" />
+    </div>
+  </form>
+</ng-template>
+
+<ng-template #abpFooter>
+  <button type="button" class="btn btn-secondary" abpClose>
+      Close
+  </button>
+
+  <!--added save button-->
+  <button class="btn btn-primary" (click)="save()" [disabled]="form.invalid">
+        <i class="fa fa-check mr-1"></i>
+        Save
+  </button>
+</ng-template>
+
+</abp-modal>
+
+<abp-modal [(visible)]="isDetailModalOpen">
+  <ng-template #abpHeader>
+    <h3>Organization Detail</h3>
+  </ng-template>
+  <ng-template #abpBody>
+    <ul class="list-group">
+      <li class="list-group-item"><strong>Code:</strong> {{ detailOrganization.code }}</li>
+      <li class="list-group-item"><strong>Name:</strong> {{ detailOrganization.name }}</li>
+    </ul>
+  </ng-template>
+</abp-modal>
