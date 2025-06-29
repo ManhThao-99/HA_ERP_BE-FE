@@ -31,11 +31,14 @@
       [rows]="organization.items"
       [count]="organization.totalCount"
       [list]="list"
+      [limit]="10"
       default
       [selectionType]="'checkbox'"
       [(selected)]="selectedRows"
       [headerHeight]="50"
+      [footerHeight]="50"
       [rowHeight]="'auto'"
+      (page)="onPage($event)"
     >
     <ngx-datatable-column
     [width]="50"
@@ -61,13 +64,19 @@
   <ng-template #abpBody>
   <form [formGroup]="form" (ngSubmit)="save()">
     <div class="mt-2">
-      <label>Code</label><span> * </span>
-      <input type="text" class="form-control" formControlName="code" />
+      <label>{{ '::Code' | abpLocalization }}</label><span> * </span>
+      <input type="text" class="form-control" formControlName="code" [class.is-invalid]="form.controls['code'].invalid && form.controls['code'].touched" />
+      <div class="invalid-feedback" *ngIf="form.controls['code'].hasError('required') && form.controls['code'].touched">
+        {{ '::Org:CodeRequired' | abpLocalization }}
+      </div>
     </div>
 
     <div class="mt-2">
-      <label>Name</label><span> * </span>
-      <input type="text" class="form-control" formControlName="name" />
+      <label>{{ '::Name' | abpLocalization }}</label><span> * </span>
+      <input type="text" class="form-control" formControlName="name" [class.is-invalid]="form.controls['name'].invalid && form.controls['name'].touched" />
+      <div class="invalid-feedback" *ngIf="form.controls['name'].hasError('required') && form.controls['name'].touched">
+        {{ '::Org:NameRequired' | abpLocalization }}
+      </div>
     </div>
   </form>
 </ng-template>

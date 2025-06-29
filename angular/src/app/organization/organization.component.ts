@@ -4,13 +4,15 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { OrganizationService, OrganizationDto } from '@proxy/organizations';
 import { ConfirmationService, Confirmation } from '@abp/ng.theme.shared';
 import { forkJoin } from 'rxjs';
+import { ToasterService } from '@abp/ng.theme.shared';
+import { LocalizationService } from '@abp/ng.core';
 
 @Component({
   selector: 'app-organization',
   standalone: false,
   templateUrl: './organization.component.html',
   styleUrl: './organization.component.scss',
-  providers: [ListService]
+  providers: [ListService],
 })
 export class OrganizationComponent implements OnInit {
   organization = { items: [], totalCount: 0 } as PagedResultDto<OrganizationDto>;
@@ -23,23 +25,45 @@ export class OrganizationComponent implements OnInit {
   isModalOpen = false;
   isDetailModalOpen = false;
 
-  constructor(public readonly list: ListService, private organizationService: OrganizationService, private fb: FormBuilder, private confirmation: ConfirmationService) {}
+  query = {
+    skipCount: 0,
+    maxResultCount: 10,
+    sorting: 'name',
+    filter: '',
+  };
+
+  constructor(
+    public readonly list: ListService,
+    private organizationService: OrganizationService,
+    private fb: FormBuilder,
+    private confirmation: ConfirmationService,
+    private toaster: ToasterService,
+    private localization: LocalizationService
+  ) {}
 
   ngOnInit() {
-    const organizationStreamCreator = (query) => this.organizationService.getList(query);
+    const organizationStreamCreator = query => this.organizationService.getList(query);
 
-    this.list.hookToQuery(organizationStreamCreator).subscribe((response) => {
+    this.list.hookToQuery(organizationStreamCreator).subscribe(response => {
       this.organization = response;
     });
+
+    this.list.get();
   }
 
-  createOrganization(){
+  onPage(event: { offset: number }) {
+    const page = event.offset;
+    this.query.skipCount = page * this.query.maxResultCount;
+    this.list.get();
+  }
+
+  createOrganization() {
     this.selectedOrganization = {} as OrganizationDto;
     this.buildForm();
     this.isModalOpen = true;
   }
 
-  editOrganization(){
+  editOrganization() {
     const id = this.selectedRows[0]?.id;
     if (!id) return;
 
@@ -51,7 +75,31 @@ export class OrganizationComponent implements OnInit {
     });
   }
 
-  save(){
+  handleAbpError(error: any) {
+    // Standard ABP error format
+    if (error?.error?.error) {
+      const abpError = error.error.error;
+      const message = this.localization.instant(abpError.code) || abpError.message;
+      this.toaster.error(message);
+      return;
+    }
+
+    // Non-standard but common error format
+    if (error?.error) {
+      const err = error.error;
+      const message = this.localization.instant(err.code) || err.message;
+      this.toaster.error(message);
+      return;
+    }
+
+    // Raw error format
+    if (error) {
+      this.toaster.error(error.message || error.statusText || 'An unexpected error occurred');
+    }
+  }
+
+  save() {
+    this.form.markAllAsTouched();
     if (this.form.invalid) {
       return;
     }
@@ -61,50 +109,62 @@ export class OrganizationComponent implements OnInit {
         .info('Are you sure you want to update this item?', 'Are you sure?')
         .subscribe(status => {
           if (status === Confirmation.Status.confirm) {
-            this.organizationService.update(this.selectedOrganization.id, this.form.value).subscribe(() => {
-              this.isModalOpen = false;
-              this.form.reset();
-              this.selectedRows = [];
-              this.list.get();
-            });
+            this.organizationService
+              .update(this.selectedOrganization.id, this.form.value)
+              .subscribe({
+                next: () => {
+                  this.toaster.success('Updated Successfully');
+                  this.isModalOpen = false;
+                  this.form.reset();
+                  this.selectedRows = [];
+                  this.list.get();
+                },
+                error: this.handleAbpError.bind(this),
+              });
           }
         });
     } else {
-      this.organizationService.create(this.form.value).subscribe(() => {
-        this.isModalOpen = false;
-        this.form.reset();
-        this.list.get();
+      this.organizationService.create(this.form.value).subscribe({
+        next: () => {
+          this.toaster.success('Created successfully');
+          this.isModalOpen = false;
+          this.form.reset();
+          this.list.get();
+        },
+        error: this.handleAbpError.bind(this),
       });
     }
   }
 
-  delete(){
-    this.confirmation.warn('Are you sure you want to delete this item?', '::AreYouSure').subscribe((status) => {
-    if (status === Confirmation.Status.confirm) {
-      const deleteRequests = this.selectedRows.map(row =>
-        this.organizationService.delete(row.id)
-      );
+  delete() {
+    this.confirmation
+      .warn('Are you sure you want to delete this item?', '::AreYouSure')
+      .subscribe(status => {
+        if (status === Confirmation.Status.confirm) {
+          const deleteRequests = this.selectedRows.map(row =>
+            this.organizationService.delete(row.id)
+          );
 
-      forkJoin(deleteRequests).subscribe(() => {
-        this.confirmation.success('Organization deleted!', 'Success!');
-        this.selectedRows = [];
-        this.list.get();
-      })
-    }
-    });
+          forkJoin(deleteRequests).subscribe(() => {
+            this.confirmation.success('Organization deleted!', 'Success!');
+            this.selectedRows = [];
+            this.list.get();
+          });
+        }
+      });
   }
 
-  view(){
+  view() {
     const id = this.selectedRows[0]?.id;
     if (!id) return;
 
-    this.organizationService.get(id).subscribe((organization) => {
+    this.organizationService.get(id).subscribe(organization => {
       this.detailOrganization = organization;
       this.isDetailModalOpen = true;
     });
   }
 
-  buildForm(){
+  buildForm() {
     const OrganizationConsts = {
       MaxCodeLength: 10,
       MaxNameLength: 50,
@@ -113,6 +173,6 @@ export class OrganizationComponent implements OnInit {
     this.form = this.fb.group({
       code: ['', [Validators.required, Validators.maxLength(OrganizationConsts.MaxCodeLength)]],
       name: ['', [Validators.required, Validators.maxLength(OrganizationConsts.MaxNameLength)]],
-    })
+    });
   }
 }

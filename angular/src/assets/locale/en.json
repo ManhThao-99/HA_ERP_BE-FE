@@ -1,0 +1,28 @@
+{
+  "culture": "en",
+  "texts": {
+    "AppName": "HA_ERP",
+    "Menu:Home": "Home",
+    "Menu:Organization": "Organization",
+    "Menu:Staff": "Staff",
+    "Welcome": "Welcome",
+    "LongWelcomeMessage": "Welcome to the application...",
+    
+    "Permission:Staffs": "Staffs Management",
+    "Permission:Staffs.Create": "Creating new Staffs",
+    "Permission:Staffs.Edit": "Editing the Staffs",
+    "Permission:Staffs.Delete": "Deleting the Staffs",
+
+    "Permission:Organizations": "Organizations Management",
+    "Permission:Organizations.Create": "Creating new Organizations",
+    "Permission:Organizations.Edit": "Editing the Organizations",
+    "Permission:Organizations.Delete": "Deleting the Organizations",
+
+    "HA_ERP:20001": "The data already exists.",
+    "HA_ERP:20002": "Data not found.",
+    "HA_ERP:20003": "Cannot delete organization because there are still staff assigned.",
+
+    "Org:CodeRequired": "Code must be required",
+    "Org:NameRequired": "Name must be required"
+  }
+}
