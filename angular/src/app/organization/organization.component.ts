@@ -6,7 +6,7 @@ import { ConfirmationService, Confirmation } from '@abp/ng.theme.shared';
 import { forkJoin } from 'rxjs';
 import { ToasterService } from '@abp/ng.theme.shared';
 import { LocalizationService } from '@abp/ng.core';
-
+import * as signalR from '@microsoft/signalr';
 @Component({
   selector: 'app-organization',
   standalone: false,
@@ -39,8 +39,10 @@ export class OrganizationComponent implements OnInit {
     private confirmation: ConfirmationService,
     private toaster: ToasterService,
     private localization: LocalizationService
-  ) {}
+  ) { }
 
+
+  
   ngOnInit() {
     const organizationStreamCreator = query => this.organizationService.getList(query);
 
@@ -49,6 +51,32 @@ export class OrganizationComponent implements OnInit {
     });
 
     this.list.get();
+
+
+    // ====== ĐOẠN TEST SIGNALR ======
+    const connection = new signalR.HubConnectionBuilder()
+      .withUrl('https://localhost:44335/signalr-hubs/organization', {
+        // Nếu backend yêu cầu token:
+        // accessTokenFactory: () => 'YOUR_ACCESS_TOKEN'
+      })
+      .withAutomaticReconnect()
+      .build();
+
+    connection.start()
+      .then(() => {
+        console.log('SignalR connected!');
+        // Join thử group với một organizationId (ví dụ: 1)
+        connection.invoke('JoinOrganizationGroup', 17);
+      })
+      .catch(err => console.error('SignalR Connection Error: ', err));
+
+    // Lắng nghe sự kiện realtime từ backend
+    connection.on('OrganizationChanged', (action, organizationId) => {
+      console.log('Realtime event:', action, organizationId);
+      // Bạn có thể thử alert hoặc reload data ở đây nếu muốn
+      // alert(`Organization ${organizationId} has been ${action}`);
+    });
+    // ====== HẾT ĐOẠN TEST SIGNALR ======
   }
 
   onPage(event: { offset: number }) {
