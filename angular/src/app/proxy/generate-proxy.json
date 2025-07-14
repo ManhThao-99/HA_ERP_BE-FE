@@ -1263,6 +1263,48 @@
                   }
                 },
                 {
+                  "name": "GetListByOrganizationAsync",
+                  "parametersOnMethod": [
+                    {
+                      "name": "id",
+                      "typeAsString": "System.Int32, System.Private.CoreLib",
+                      "type": "System.Int32",
+                      "typeSimple": "number",
+                      "isOptional": false,
+                      "defaultValue": null
+                    },
+                    {
+                      "name": "input",
+                      "typeAsString": "Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto, Volo.Abp.Ddd.Application.Contracts",
+                      "type": "Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto",
+                      "typeSimple": "Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto",
+                      "isOptional": false,
+                      "defaultValue": null
+                    }
+                  ],
+                  "returnValue": {
+                    "type": "Volo.Abp.Application.Dtos.PagedResultDto<HA_ERP.Staffs.StaffDto>",
+                    "typeSimple": "Volo.Abp.Application.Dtos.PagedResultDto<HA_ERP.Staffs.StaffDto>"
+                  }
+                },
+                {
+                  "name": "GetManager",
+                  "parametersOnMethod": [
+                    {
+                      "name": "id",
+                      "typeAsString": "System.Int32, System.Private.CoreLib",
+                      "type": "System.Int32",
+                      "typeSimple": "number",
+                      "isOptional": false,
+                      "defaultValue": null
+                    }
+                  ],
+                  "returnValue": {
+                    "type": "System.Collections.Generic.List<HA_ERP.Staffs.StaffSimpleDto>",
+                    "typeSimple": "[HA_ERP.Staffs.StaffSimpleDto]"
+                  }
+                },
+                {
                   "name": "CreateAsync",
                   "parametersOnMethod": [
                     {
@@ -1447,6 +1489,124 @@
               "returnValue": {
                 "type": "Volo.Abp.Application.Dtos.PagedResultDto<HA_ERP.Staffs.StaffDto>",
                 "typeSimple": "Volo.Abp.Application.Dtos.PagedResultDto<HA_ERP.Staffs.StaffDto>"
+              },
+              "allowAnonymous": false,
+              "implementFrom": "HA_ERP.Staffs.IStaffAppService"
+            },
+            "GetListByOrganizationAsyncByIdAndInput": {
+              "uniqueName": "GetListByOrganizationAsyncByIdAndInput",
+              "name": "GetListByOrganizationAsync",
+              "httpMethod": "GET",
+              "url": "api/app/staff/{id}/by-organization",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "id",
+                  "typeAsString": "System.Int32, System.Private.CoreLib",
+                  "type": "System.Int32",
+                  "typeSimple": "number",
+                  "isOptional": false,
+                  "defaultValue": null
+                },
+                {
+                  "name": "input",
+                  "typeAsString": "Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto, Volo.Abp.Ddd.Application.Contracts",
+                  "type": "Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto",
+                  "typeSimple": "Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "id",
+                  "name": "id",
+                  "jsonName": null,
+                  "type": "System.Int32",
+                  "typeSimple": "number",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": [],
+                  "bindingSourceId": "Path",
+                  "descriptorName": ""
+                },
+                {
+                  "nameOnMethod": "input",
+                  "name": "Sorting",
+                  "jsonName": null,
+                  "type": "System.String",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "input"
+                },
+                {
+                  "nameOnMethod": "input",
+                  "name": "SkipCount",
+                  "jsonName": null,
+                  "type": "System.Int32",
+                  "typeSimple": "number",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "input"
+                },
+                {
+                  "nameOnMethod": "input",
+                  "name": "MaxResultCount",
+                  "jsonName": null,
+                  "type": "System.Int32",
+                  "typeSimple": "number",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "input"
+                }
+              ],
+              "returnValue": {
+                "type": "Volo.Abp.Application.Dtos.PagedResultDto<HA_ERP.Staffs.StaffDto>",
+                "typeSimple": "Volo.Abp.Application.Dtos.PagedResultDto<HA_ERP.Staffs.StaffDto>"
+              },
+              "allowAnonymous": false,
+              "implementFrom": "HA_ERP.Staffs.IStaffAppService"
+            },
+            "GetManagerById": {
+              "uniqueName": "GetManagerById",
+              "name": "GetManager",
+              "httpMethod": "GET",
+              "url": "api/app/staff/{id}/manager",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "id",
+                  "typeAsString": "System.Int32, System.Private.CoreLib",
+                  "type": "System.Int32",
+                  "typeSimple": "number",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "id",
+                  "name": "id",
+                  "jsonName": null,
+                  "type": "System.Int32",
+                  "typeSimple": "number",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": [],
+                  "bindingSourceId": "Path",
+                  "descriptorName": ""
+                }
+              ],
+              "returnValue": {
+                "type": "System.Collections.Generic.List<HA_ERP.Staffs.StaffSimpleDto>",
+                "typeSimple": "[HA_ERP.Staffs.StaffSimpleDto]"
               },
               "allowAnonymous": false,
               "implementFrom": "HA_ERP.Staffs.IStaffAppService"
@@ -4181,7 +4341,7 @@
           "typeSimple": "string",
           "isRequired": true,
           "minLength": 0,
-          "maxLength": 36,
+          "maxLength": 12,
           "minimum": null,
           "maximum": null,
           "regex": null
@@ -4268,7 +4428,7 @@
           "typeSimple": "string",
           "isRequired": true,
           "minLength": 0,
-          "maxLength": 36,
+          "maxLength": 12,
           "minimum": null,
           "maximum": null,
           "regex": null
@@ -4323,7 +4483,7 @@
           "jsonName": null,
           "type": "System.String",
           "typeSimple": "string",
-          "isRequired": true,
+          "isRequired": false,
           "minLength": 0,
           "maxLength": 36,
           "minimum": null,
@@ -4335,7 +4495,7 @@
           "jsonName": null,
           "type": "System.String",
           "typeSimple": "string",
-          "isRequired": true,
+          "isRequired": false,
           "minLength": 0,
           "maxLength": 12,
           "minimum": null,
@@ -4347,7 +4507,7 @@
           "jsonName": null,
           "type": "System.String",
           "typeSimple": "string",
-          "isRequired": true,
+          "isRequired": false,
           "minLength": 0,
           "maxLength": 36,
           "minimum": null,
@@ -4359,7 +4519,7 @@
           "jsonName": null,
           "type": "System.String",
           "typeSimple": "string",
-          "isRequired": true,
+          "isRequired": false,
           "minLength": 0,
           "maxLength": 100,
           "minimum": null,
@@ -4371,7 +4531,7 @@
           "jsonName": null,
           "type": "System.String",
           "typeSimple": "string",
-          "isRequired": true,
+          "isRequired": false,
           "minLength": 0,
           "maxLength": 150,
           "minimum": null,
@@ -4383,7 +4543,7 @@
           "jsonName": null,
           "type": "System.String",
           "typeSimple": "string",
-          "isRequired": true,
+          "isRequired": false,
           "minLength": 0,
           "maxLength": 36,
           "minimum": null,
@@ -4395,7 +4555,7 @@
           "jsonName": null,
           "type": "System.String",
           "typeSimple": "string",
-          "isRequired": true,
+          "isRequired": false,
           "minLength": 0,
           "maxLength": 100,
           "minimum": null,
@@ -4407,7 +4567,7 @@
           "jsonName": null,
           "type": "System.String",
           "typeSimple": "string",
-          "isRequired": true,
+          "isRequired": false,
           "minLength": 0,
           "maxLength": 150,
           "minimum": null,
@@ -4545,6 +4705,39 @@
         },
         {
           "name": "BankAddress",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        }
+      ]
+    },
+    "HA_ERP.Staffs.StaffSimpleDto": {
+      "baseType": null,
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "Id",
+          "jsonName": null,
+          "type": "System.Int32",
+          "typeSimple": "number",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "Name",
           "jsonName": null,
           "type": "System.String",
           "typeSimple": "string",

@@ -4,14 +4,14 @@ export interface CreateStaffDto {
   organizationId: number;
   managerId?: number;
   code: string;
-  name: string;
-  mobile: string;
-  email: string;
-  address: string;
-  bankAccountName: string;
-  bankAccountNo: string;
-  bankName: string;
-  bankAddress: string;
+  name?: string;
+  mobile?: string;
+  email?: string;
+  address?: string;
+  bankAccountName?: string;
+  bankAccountNo?: string;
+  bankName?: string;
+  bankAddress?: string;
 }
 
 export interface StaffDto extends AuditedEntityDto<number> {
@@ -26,6 +26,11 @@ export interface StaffDto extends AuditedEntityDto<number> {
   bankAccountNo?: string;
   bankName?: string;
   bankAddress?: string;
+}
+
+export interface StaffSimpleDto {
+  id: number;
+  name?: string;
 }
 
 export interface UpdateStaffDto {

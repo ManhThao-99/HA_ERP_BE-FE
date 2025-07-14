@@ -16,13 +16,6 @@ function configureRoutes(routesService: RoutesService) {
         layout: eLayoutType.application,
       },
       {
-        path: '/staffs',
-        name: '::Menu:Staff',
-        iconClass: 'fas fa-user',
-        order: 2,
-        layout: eLayoutType.application,
-      },
-      {
         path: '/organizations',
         name: '::Menu:Organization',
         iconClass: 'fas fa-clipboard',
