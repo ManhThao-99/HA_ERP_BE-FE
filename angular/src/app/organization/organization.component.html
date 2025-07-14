@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col col-md-6">
         <h5 class="card-title">
-          {{ '::Menu:Organization' | abpLocalization }}
+          {{ '::Permission:Organizations' | abpLocalization }}
         </h5>
       </div>
       <div class="text-end col col-md-6"></div>
@@ -13,32 +13,34 @@
   <div class="card-body">
     <div class="mb-3 d-flex justify-content-between align-items-center">
       <div>
-        <button class="btn btn-success me-2" (click)="createOrganization()" [disabled]="selectedRows.length > 0">
+        <button class="btn btn-success me-2" (click)="createOrganization()" [disabled]="selectedOrganizationRows.length > 0">
           <i class="fa fa-plus me-1"></i>CREATE
         </button>
-        <button class="btn btn-primary me-2" (click)="editOrganization()" [disabled]="selectedRows.length !== 1">
+        <button class="btn btn-primary me-2" (click)="editOrganization()" [disabled]="selectedOrganizationRows.length !== 1">
           <i class="fa fa-pen me-1"></i>UPDATE
         </button>
-        <button class="btn btn-danger me-2" (click)="delete()" [disabled]="selectedRows.length === 0">
+        <button class="btn btn-danger me-2" (click)="deleteOrganization()" [disabled]="selectedOrganizationRows.length === 0">
           <i class="fa fa-trash me-1"></i>DELETE
         </button>
-        <button class="btn btn-warning me-2" (click)="view()" [disabled]="selectedRows.length !== 1">
+        <button class="btn btn-warning me-2" (click)="viewOrganization()" [disabled]="selectedOrganizationRows.length !== 1">
           <i class="fa fa-eye me-1"></i>DETAIL
         </button>
       </div>
     </div>
+    <!-- Organization Table -->
     <ngx-datatable
       [rows]="organization.items"
       [count]="organization.totalCount"
       [list]="list"
       [limit]="10"
-      default
       [selectionType]="'checkbox'"
-      [(selected)]="selectedRows"
+      [(selected)]="selectedOrganizationRows"
       [headerHeight]="50"
       [footerHeight]="50"
       [rowHeight]="'auto'"
       (page)="onPage($event)"
+      (select)="onOrganizationCheckboxChange($event)"
+      default
     >
     <ngx-datatable-column
     [width]="50"
@@ -56,9 +58,103 @@
   </div>
 </div>
 
+<div class="card">
+  <div class="card-header">
+    <div class="row">
+      <div class="col col-md-6">
+        <h5 class="card-title">
+          {{ '::Permission:Staffs' | abpLocalization }}
+        </h5>
+      </div>
+      <div class="text-end col col-md-6"></div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="mb-3 d-flex justify-content-between align-items-center">
+      <div>
+        <button class="btn btn-info me-2" (click)="showAllStaff()">
+          <i class="fa fa-list me-1"></i>SHOW ALL
+        </button>
+        <button class="btn btn-success me-2" (click)="createStaff()" [disabled]="selectedStaffRows.length > 0">
+            <i class="fa fa-plus me-1"></i>CREATE</button>
+        <button class="btn btn-primary me-2" (click)="editStaff()" [disabled]="selectedStaffRows.length !== 1">
+            <i class="fa fa-pen me-1"></i>UPDATE</button>
+        <button class="btn btn-danger me-2" (click)="deleteStaff()" [disabled]="selectedStaffRows.length === 0">
+            <i class="fa fa-trash me-1"></i>DELETE</button>
+        <button class="btn btn-warning me-2" (click)="viewStaffDetail()" [disabled]="selectedStaffRows.length !== 1">
+            <i class="fa fa-eye me-1"></i>DETAIL</button>
+      </div>
+    </div>
+        <!-- Staff Table -->
+     <ngx-datatable
+      class="bootstrap"
+      [rows]="staff.items"
+      [count]="staff.totalCount"
+      [list]="list"
+      default
+      [selectionType]="'checkbox'"
+      [(selected)]="selectedStaffRows"
+      [headerHeight]="50"
+      [rowHeight]="'auto'"
+      (page)="onStaffPage($event)"
+      [offset]="staffQuery.skipCount / staffQuery.maxResultCount"
+      [limit]="staffQuery.maxResultCount"
+>
+    >
+      <ngx-datatable-column
+    [width]="50"
+    [canAutoResize]="false"
+    [sortable]="false"
+    [draggable]="false"
+    [resizeable]="false"
+    [headerCheckboxable]="true"
+    [checkboxable]="true"
+  >
+  </ngx-datatable-column>
+      <ngx-datatable-column [name]="'::Code' | abpLocalization" prop="code" [width]="100"></ngx-datatable-column>
+      <ngx-datatable-column [name]="'::Name' | abpLocalization" prop="name" [width]="180"></ngx-datatable-column>
+      <ngx-datatable-column
+        [name]="'::Mobile' | abpLocalization"
+        prop="mobile"
+        [width]="140"
+      ></ngx-datatable-column>
+      <ngx-datatable-column
+        [name]="'::Email' | abpLocalization"
+        prop="email"
+        [width]="250"
+      ></ngx-datatable-column>
+      <ngx-datatable-column
+        [name]="'::Address' | abpLocalization"
+        prop="address"
+        [width]="250"
+      ></ngx-datatable-column>
+      <ngx-datatable-column
+        [name]="'::BankAccountName' | abpLocalization"
+        prop="bankAccountName"
+        [width]="200"
+      ></ngx-datatable-column>
+      <ngx-datatable-column
+        [name]="'::BankAccountNo' | abpLocalization"
+        prop="bankAccountNo"
+        [width]="180"
+      ></ngx-datatable-column>
+      <ngx-datatable-column
+        [name]="'::BankName' | abpLocalization"
+        prop="bankName"
+        [width]="200"
+      ></ngx-datatable-column>
+      <ngx-datatable-column
+        [name]="'::BankAddress' | abpLocalization"
+        prop="bankAddress"
+        [width]="250"
+      ></ngx-datatable-column>
+    </ngx-datatable>
+  </div>
+</div>
+
 <abp-modal [(visible)]="isModalOpen">
   <ng-template #abpHeader>
-    <h3>{{ (selectedOrganization.id ? 'Edit' : 'New Organization') }}</h3>
+    <h3>{{ selectedOrganization?.id ? '::Permission:Organizations.Edit' : '::Permission:Organizations.Create' | abpLocalization }}</h3>
   </ng-template>
 
   <ng-template #abpBody>
@@ -87,7 +183,7 @@
   </button>
 
   <!--added save button-->
-  <button class="btn btn-primary" (click)="save()" [disabled]="form.invalid">
+  <button class="btn btn-primary" (click)="saveOrganization()" [disabled]="form.invalid">
         <i class="fa fa-check mr-1"></i>
         Save
   </button>
@@ -103,6 +199,107 @@
     <ul class="list-group">
       <li class="list-group-item"><strong>Code:</strong> {{ detailOrganization.code }}</li>
       <li class="list-group-item"><strong>Name:</strong> {{ detailOrganization.name }}</li>
+    </ul>
+  </ng-template>
+</abp-modal>
+
+<!-- Staff Reactive Forms -->
+ <abp-modal [(visible)]="isStaffModalOpen">
+  <ng-template #abpHeader>
+    <h3>{{ staffForm?.get('id') ? '::Permission:Staffs.Edit' : '::Permission:Staffs.Create' | abpLocalization}}</h3>
+  </ng-template>
+
+  <ng-template #abpBody>
+    <form [formGroup]="staffForm" (ngSubmit)="saveStaff()">
+      <!-- Mã nhân viên -->
+      <div class="mt-2">
+        <label>Code *</label>
+        <input class="form-control" formControlName="code" />
+      </div>
+
+      <!-- Tên nhân viên -->
+      <div class="mt-2">
+        <label>Name *</label>
+        <input class="form-control" formControlName="name" />
+      </div>
+
+      <!-- Mobile -->
+      <div class="mt-2">
+        <label>Mobile *</label>
+        <input class="form-control" formControlName="mobile" />
+      </div>
+
+      <!-- Email -->
+      <div class="mt-2">
+        <label>Email *</label>
+        <input class="form-control" formControlName="email" />
+      </div>
+
+      <!-- Address -->
+      <div class="mt-2">
+        <label>Address *</label>
+        <input class="form-control" formControlName="address" />
+      </div>
+
+      <!-- Managed By (Manager) -->
+      <div class="mt-2">
+        <label>Managed By</label>
+        <select class="form-select" formControlName="managerId">
+          <option [ngValue]="null">-- None --</option>
+          <option *ngFor="let manager of managers" [ngValue]="manager.id">
+            {{ manager.name }}
+          </option>
+        </select>
+      </div>
+
+      <!-- Các trường ngân hàng... -->
+      <div class="mt-2">
+        <label>Bank Account Name *</label>
+        <input class="form-control" formControlName="bankAccountName" />
+      </div>
+
+      <div class="mt-2">
+        <label>Bank Account No *</label>
+        <input class="form-control" formControlName="bankAccountNo" />
+      </div>
+
+      <div class="mt-2">
+        <label>Bank Name *</label>
+        <input class="form-control" formControlName="bankName" />
+      </div>
+
+      <div class="mt-2">
+        <label>Bank Address *</label>
+        <input class="form-control" formControlName="bankAddress" />
+      </div>
+    </form>
+  </ng-template>
+
+  <ng-template #abpFooter>
+    <button class="btn btn-secondary" abpClose>Close</button>
+    <button class="btn btn-primary" (click)="saveStaff()" [disabled]="staffForm.invalid">
+      <i class="fa fa-check me-1"></i> Save
+    </button>
+  </ng-template>
+</abp-modal>
+
+<abp-modal [(visible)]="isStaffDetailModalOpen">
+  <ng-template #abpHeader>
+    <h3>Staff Detail</h3>
+  </ng-template>
+  <ng-template #abpBody>
+    <ul class="list-group">
+      <li class="list-group-item"><strong>Organization ID:</strong> {{ detailStaff.organizationId }}</li>
+      <li class="list-group-item"><strong>Manager ID:</strong> {{ detailStaff.managerId ?? '-' }}</li>
+      <li class="list-group-item"><strong>Code:</strong> {{ detailStaff.code }}</li>
+      <li class="list-group-item"><strong>Name:</strong> {{ detailStaff.name }}</li>
+      <li class="list-group-item"><strong>Mobile:</strong> {{ detailStaff.mobile }}</li>
+      <li class="list-group-item"><strong>Email:</strong> {{ detailStaff.email }}</li>
+      <li class="list-group-item"><strong>Address:</strong> {{ detailStaff.address }}</li>
+      <li class="list-group-item"><strong>Bank Account Name:</strong> {{ detailStaff.bankAccountName }}</li>
+      <li class="list-group-item"><strong>Bank Account No:</strong> {{ detailStaff.bankAccountNo }}</li>
+      <li class="list-group-item"><strong>Bank Name:</strong> {{ detailStaff.bankName }}</li>
+      <li class="list-group-item"><strong>Bank Address:</strong> {{ detailStaff.bankAddress }}</li>
     </ul>
   </ng-template>
 </abp-modal>
