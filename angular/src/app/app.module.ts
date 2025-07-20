@@ -1,4 +1,4 @@
-import { CoreModule, provideAbpCore, withOptions, LOCALIZATIONS  } from '@abp/ng.core';
+import { CoreModule, provideAbpCore, withOptions, LOCALIZATIONS } from '@abp/ng.core';
 import { registerLocale } from '@abp/ng.core/locale';
 import { provideFeatureManagementConfig } from '@abp/ng.feature-management';
 import { provideAbpOAuth } from '@abp/ng.oauth';
@@ -16,47 +16,57 @@ import { APP_ROUTE_PROVIDER } from './route.provider';
 import { ThemeLeptonXModule } from '@abp/ng.theme.lepton-x';
 import { SideMenuLayoutModule } from '@abp/ng.theme.lepton-x/layouts';
 import { AccountLayoutModule } from '@abp/ng.theme.lepton-x/account';
-import { ThemeSharedModule, withHttpErrorConfig, withValidationBluePrint, provideAbpThemeShared, InternetConnectionStatusComponent } from '@abp/ng.theme.shared';
+import {
+  ThemeSharedModule,
+  withHttpErrorConfig,
+  withValidationBluePrint,
+  provideAbpThemeShared,
+  InternetConnectionStatusComponent,
+} from '@abp/ng.theme.shared';
 import en from '../assets/locale/en.json';
+
 @NgModule({
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        AppRoutingModule,
-        CoreModule,
-        InternetConnectionStatusComponent,
-        ThemeLeptonXModule.forRoot(),
-        SideMenuLayoutModule.forRoot(),
-        AccountLayoutModule.forRoot(),
-        ThemeSharedModule,
-    ],
-    declarations: [AppComponent],
-    providers: [
-        APP_ROUTE_PROVIDER,
-        provideAbpCore(withOptions({
-            environment,
-            registerLocaleFn: registerLocale(),
-        })),
-        provideAbpOAuth(),
-        provideSettingManagementConfig(),
-        provideAccountConfig(),
-        provideIdentityConfig(),
-        provideTenantManagementConfig(),
-        provideFeatureManagementConfig(),
-        provideAbpThemeShared(withValidationBluePrint({
-            wrongPassword: 'Please choose 1q2w3E*'
-        })),
-        {
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    CoreModule,
+    InternetConnectionStatusComponent,
+    ThemeLeptonXModule.forRoot(),
+    SideMenuLayoutModule.forRoot(),
+    AccountLayoutModule.forRoot(),
+    ThemeSharedModule,
+  ],
+  declarations: [AppComponent],
+  providers: [
+    APP_ROUTE_PROVIDER,
+    provideAbpCore(
+      withOptions({
+        environment,
+        registerLocaleFn: registerLocale(),
+      })
+    ),
+    provideAbpOAuth(),
+    provideSettingManagementConfig(),
+    provideAccountConfig(),
+    provideIdentityConfig(),
+    provideTenantManagementConfig(),
+    provideFeatureManagementConfig(),
+    provideAbpThemeShared(
+      withValidationBluePrint({
+        wrongPassword: 'Please choose 1q2w3E*',
+      })
+    ),
+    {
       provide: LOCALIZATIONS,
       useValue: {
         cultureName: 'en',
         values: en.texts,
-        baseResourceName: 'HA_ERP'
+        baseResourceName: 'HA_ERP',
       },
-      multi: true
-    }
-    ],
-    bootstrap: [AppComponent],
+      multi: true,
+    },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule {
-}
+export class AppModule {}

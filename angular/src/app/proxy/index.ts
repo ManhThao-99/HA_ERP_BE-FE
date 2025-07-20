@@ -1,3 +1,3 @@
-import * as Organizations from './organizations';
+import * as OrganizationUnits from './organization-units';
 import * as Staffs from './staffs';
-export { Organizations, Staffs };
+export { OrganizationUnits, Staffs };

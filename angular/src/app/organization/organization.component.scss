@@ -1,0 +1,33 @@
+::ng-deep .p-tree .p-treenode-content {
+  border-left: 2px solid #dee2e6;
+  margin-left: 1rem;
+  padding-left: 0.5rem;
+  transition: background-color 0.2s;
+}
+
+.tree-node {
+  transition: background-color 0.2s ease;
+}
+
+.tree-node:hover {
+  background-color: #f0f0f5;
+  transition: background-color 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.selected-node {
+  background-color: #d1e7dd !important;
+  font-weight: 500;
+}
+
+.node-actions button {
+  margin-left: 0.25rem;
+}
+
+.toggle-icon {
+  cursor: pointer;
+}
+
+.p-tree-toggler + .p-treenode-icon {
+  display: none; // Ẩn icon mặc định của PrimeNG
+}
