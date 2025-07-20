@@ -1,7 +1,7 @@
 import type { AuditedEntityDto } from '@abp/ng.core';
 
 export interface CreateStaffDto {
-  organizationId: number;
+  organizationUnitId?: string;
   managerId?: number;
   code: string;
   name?: string;
@@ -15,7 +15,7 @@ export interface CreateStaffDto {
 }
 
 export interface StaffDto extends AuditedEntityDto<number> {
-  organizationId: number;
+  organizationUnitId?: string;
   managerId?: number;
   code?: string;
   name?: string;
@@ -34,15 +34,15 @@ export interface StaffSimpleDto {
 }
 
 export interface UpdateStaffDto {
-  organizationId: number;
+  organizationUnitId?: string;
   managerId?: number;
   code: string;
-  name: string;
-  mobile: string;
-  email: string;
-  address: string;
-  bankAccountName: string;
-  bankAccountNo: string;
-  bankName: string;
-  bankAddress: string;
+  name?: string;
+  mobile?: string;
+  email?: string;
+  address?: string;
+  bankAccountName?: string;
+  bankAccountNo?: string;
+  bankName?: string;
+  bankAddress?: string;
 }

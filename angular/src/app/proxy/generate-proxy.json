@@ -873,358 +873,6 @@
       "rootPath": "app",
       "remoteServiceName": "Default",
       "controllers": {
-        "HA_ERP.Organizations.OrganizationAppService": {
-          "controllerName": "Organization",
-          "controllerGroupName": "Organization",
-          "isRemoteService": true,
-          "isIntegrationService": false,
-          "apiVersion": null,
-          "type": "HA_ERP.Organizations.OrganizationAppService",
-          "interfaces": [
-            {
-              "type": "HA_ERP.Organizations.IOrganizationAppService",
-              "name": "IOrganizationAppService",
-              "methods": [
-                {
-                  "name": "GetAsync",
-                  "parametersOnMethod": [
-                    {
-                      "name": "id",
-                      "typeAsString": "System.Int32, System.Private.CoreLib",
-                      "type": "System.Int32",
-                      "typeSimple": "number",
-                      "isOptional": false,
-                      "defaultValue": null
-                    }
-                  ],
-                  "returnValue": {
-                    "type": "HA_ERP.Organizations.OrganizationDto",
-                    "typeSimple": "HA_ERP.Organizations.OrganizationDto"
-                  }
-                },
-                {
-                  "name": "GetListAsync",
-                  "parametersOnMethod": [
-                    {
-                      "name": "input",
-                      "typeAsString": "HA_ERP.Organizations.GetListOrganizationDto, HA_ERP.Application.Contracts",
-                      "type": "HA_ERP.Organizations.GetListOrganizationDto",
-                      "typeSimple": "HA_ERP.Organizations.GetListOrganizationDto",
-                      "isOptional": false,
-                      "defaultValue": null
-                    }
-                  ],
-                  "returnValue": {
-                    "type": "Volo.Abp.Application.Dtos.PagedResultDto<HA_ERP.Organizations.OrganizationDto>",
-                    "typeSimple": "Volo.Abp.Application.Dtos.PagedResultDto<HA_ERP.Organizations.OrganizationDto>"
-                  }
-                },
-                {
-                  "name": "CreateAsync",
-                  "parametersOnMethod": [
-                    {
-                      "name": "input",
-                      "typeAsString": "HA_ERP.Organizations.CreateOrganizationDto, HA_ERP.Application.Contracts",
-                      "type": "HA_ERP.Organizations.CreateOrganizationDto",
-                      "typeSimple": "HA_ERP.Organizations.CreateOrganizationDto",
-                      "isOptional": false,
-                      "defaultValue": null
-                    }
-                  ],
-                  "returnValue": {
-                    "type": "HA_ERP.Organizations.OrganizationDto",
-                    "typeSimple": "HA_ERP.Organizations.OrganizationDto"
-                  }
-                },
-                {
-                  "name": "UpdateAsync",
-                  "parametersOnMethod": [
-                    {
-                      "name": "id",
-                      "typeAsString": "System.Int32, System.Private.CoreLib",
-                      "type": "System.Int32",
-                      "typeSimple": "number",
-                      "isOptional": false,
-                      "defaultValue": null
-                    },
-                    {
-                      "name": "input",
-                      "typeAsString": "HA_ERP.Organizations.UpdateOrganizationDto, HA_ERP.Application.Contracts",
-                      "type": "HA_ERP.Organizations.UpdateOrganizationDto",
-                      "typeSimple": "HA_ERP.Organizations.UpdateOrganizationDto",
-                      "isOptional": false,
-                      "defaultValue": null
-                    }
-                  ],
-                  "returnValue": {
-                    "type": "System.Void",
-                    "typeSimple": "System.Void"
-                  }
-                },
-                {
-                  "name": "DeleteAsync",
-                  "parametersOnMethod": [
-                    {
-                      "name": "id",
-                      "typeAsString": "System.Int32, System.Private.CoreLib",
-                      "type": "System.Int32",
-                      "typeSimple": "number",
-                      "isOptional": false,
-                      "defaultValue": null
-                    }
-                  ],
-                  "returnValue": {
-                    "type": "System.Void",
-                    "typeSimple": "System.Void"
-                  }
-                }
-              ]
-            }
-          ],
-          "actions": {
-            "CreateAsyncByInput": {
-              "uniqueName": "CreateAsyncByInput",
-              "name": "CreateAsync",
-              "httpMethod": "POST",
-              "url": "api/app/organization",
-              "supportedVersions": [],
-              "parametersOnMethod": [
-                {
-                  "name": "input",
-                  "typeAsString": "HA_ERP.Organizations.CreateOrganizationDto, HA_ERP.Application.Contracts",
-                  "type": "HA_ERP.Organizations.CreateOrganizationDto",
-                  "typeSimple": "HA_ERP.Organizations.CreateOrganizationDto",
-                  "isOptional": false,
-                  "defaultValue": null
-                }
-              ],
-              "parameters": [
-                {
-                  "nameOnMethod": "input",
-                  "name": "input",
-                  "jsonName": null,
-                  "type": "HA_ERP.Organizations.CreateOrganizationDto",
-                  "typeSimple": "HA_ERP.Organizations.CreateOrganizationDto",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Body",
-                  "descriptorName": ""
-                }
-              ],
-              "returnValue": {
-                "type": "HA_ERP.Organizations.OrganizationDto",
-                "typeSimple": "HA_ERP.Organizations.OrganizationDto"
-              },
-              "allowAnonymous": false,
-              "implementFrom": "HA_ERP.Organizations.IOrganizationAppService"
-            },
-            "DeleteAsyncById": {
-              "uniqueName": "DeleteAsyncById",
-              "name": "DeleteAsync",
-              "httpMethod": "DELETE",
-              "url": "api/app/organization/{id}",
-              "supportedVersions": [],
-              "parametersOnMethod": [
-                {
-                  "name": "id",
-                  "typeAsString": "System.Int32, System.Private.CoreLib",
-                  "type": "System.Int32",
-                  "typeSimple": "number",
-                  "isOptional": false,
-                  "defaultValue": null
-                }
-              ],
-              "parameters": [
-                {
-                  "nameOnMethod": "id",
-                  "name": "id",
-                  "jsonName": null,
-                  "type": "System.Int32",
-                  "typeSimple": "number",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": [],
-                  "bindingSourceId": "Path",
-                  "descriptorName": ""
-                }
-              ],
-              "returnValue": {
-                "type": "System.Void",
-                "typeSimple": "System.Void"
-              },
-              "allowAnonymous": false,
-              "implementFrom": "HA_ERP.Organizations.IOrganizationAppService"
-            },
-            "GetAsyncById": {
-              "uniqueName": "GetAsyncById",
-              "name": "GetAsync",
-              "httpMethod": "GET",
-              "url": "api/app/organization/{id}",
-              "supportedVersions": [],
-              "parametersOnMethod": [
-                {
-                  "name": "id",
-                  "typeAsString": "System.Int32, System.Private.CoreLib",
-                  "type": "System.Int32",
-                  "typeSimple": "number",
-                  "isOptional": false,
-                  "defaultValue": null
-                }
-              ],
-              "parameters": [
-                {
-                  "nameOnMethod": "id",
-                  "name": "id",
-                  "jsonName": null,
-                  "type": "System.Int32",
-                  "typeSimple": "number",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": [],
-                  "bindingSourceId": "Path",
-                  "descriptorName": ""
-                }
-              ],
-              "returnValue": {
-                "type": "HA_ERP.Organizations.OrganizationDto",
-                "typeSimple": "HA_ERP.Organizations.OrganizationDto"
-              },
-              "allowAnonymous": false,
-              "implementFrom": "HA_ERP.Organizations.IOrganizationAppService"
-            },
-            "GetListAsyncByInput": {
-              "uniqueName": "GetListAsyncByInput",
-              "name": "GetListAsync",
-              "httpMethod": "GET",
-              "url": "api/app/organization",
-              "supportedVersions": [],
-              "parametersOnMethod": [
-                {
-                  "name": "input",
-                  "typeAsString": "HA_ERP.Organizations.GetListOrganizationDto, HA_ERP.Application.Contracts",
-                  "type": "HA_ERP.Organizations.GetListOrganizationDto",
-                  "typeSimple": "HA_ERP.Organizations.GetListOrganizationDto",
-                  "isOptional": false,
-                  "defaultValue": null
-                }
-              ],
-              "parameters": [
-                {
-                  "nameOnMethod": "input",
-                  "name": "Filter",
-                  "jsonName": null,
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "ModelBinding",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "Sorting",
-                  "jsonName": null,
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "ModelBinding",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "SkipCount",
-                  "jsonName": null,
-                  "type": "System.Int32",
-                  "typeSimple": "number",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "ModelBinding",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "MaxResultCount",
-                  "jsonName": null,
-                  "type": "System.Int32",
-                  "typeSimple": "number",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "ModelBinding",
-                  "descriptorName": "input"
-                }
-              ],
-              "returnValue": {
-                "type": "Volo.Abp.Application.Dtos.PagedResultDto<HA_ERP.Organizations.OrganizationDto>",
-                "typeSimple": "Volo.Abp.Application.Dtos.PagedResultDto<HA_ERP.Organizations.OrganizationDto>"
-              },
-              "allowAnonymous": false,
-              "implementFrom": "HA_ERP.Organizations.IOrganizationAppService"
-            },
-            "UpdateAsyncByIdAndInput": {
-              "uniqueName": "UpdateAsyncByIdAndInput",
-              "name": "UpdateAsync",
-              "httpMethod": "PUT",
-              "url": "api/app/organization/{id}",
-              "supportedVersions": [],
-              "parametersOnMethod": [
-                {
-                  "name": "id",
-                  "typeAsString": "System.Int32, System.Private.CoreLib",
-                  "type": "System.Int32",
-                  "typeSimple": "number",
-                  "isOptional": false,
-                  "defaultValue": null
-                },
-                {
-                  "name": "input",
-                  "typeAsString": "HA_ERP.Organizations.UpdateOrganizationDto, HA_ERP.Application.Contracts",
-                  "type": "HA_ERP.Organizations.UpdateOrganizationDto",
-                  "typeSimple": "HA_ERP.Organizations.UpdateOrganizationDto",
-                  "isOptional": false,
-                  "defaultValue": null
-                }
-              ],
-              "parameters": [
-                {
-                  "nameOnMethod": "id",
-                  "name": "id",
-                  "jsonName": null,
-                  "type": "System.Int32",
-                  "typeSimple": "number",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": [],
-                  "bindingSourceId": "Path",
-                  "descriptorName": ""
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "input",
-                  "jsonName": null,
-                  "type": "HA_ERP.Organizations.UpdateOrganizationDto",
-                  "typeSimple": "HA_ERP.Organizations.UpdateOrganizationDto",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Body",
-                  "descriptorName": ""
-                }
-              ],
-              "returnValue": {
-                "type": "System.Void",
-                "typeSimple": "System.Void"
-              },
-              "allowAnonymous": false,
-              "implementFrom": "HA_ERP.Organizations.IOrganizationAppService"
-            }
-          }
-        },
         "HA_ERP.Staffs.StaffAppService": {
           "controllerName": "Staff",
           "controllerGroupName": "Staff",
@@ -1267,9 +915,9 @@
                   "parametersOnMethod": [
                     {
                       "name": "id",
-                      "typeAsString": "System.Int32, System.Private.CoreLib",
-                      "type": "System.Int32",
-                      "typeSimple": "number",
+                      "typeAsString": "System.Guid, System.Private.CoreLib",
+                      "type": "System.Guid",
+                      "typeSimple": "string",
                       "isOptional": false,
                       "defaultValue": null
                     },
@@ -1292,9 +940,9 @@
                   "parametersOnMethod": [
                     {
                       "name": "id",
-                      "typeAsString": "System.Int32, System.Private.CoreLib",
-                      "type": "System.Int32",
-                      "typeSimple": "number",
+                      "typeAsString": "System.Guid, System.Private.CoreLib",
+                      "type": "System.Guid",
+                      "typeSimple": "string",
                       "isOptional": false,
                       "defaultValue": null
                     }
@@ -1502,9 +1150,9 @@
               "parametersOnMethod": [
                 {
                   "name": "id",
-                  "typeAsString": "System.Int32, System.Private.CoreLib",
-                  "type": "System.Int32",
-                  "typeSimple": "number",
+                  "typeAsString": "System.Guid, System.Private.CoreLib",
+                  "type": "System.Guid",
+                  "typeSimple": "string",
                   "isOptional": false,
                   "defaultValue": null
                 },
@@ -1522,8 +1170,8 @@
                   "nameOnMethod": "id",
                   "name": "id",
                   "jsonName": null,
-                  "type": "System.Int32",
-                  "typeSimple": "number",
+                  "type": "System.Guid",
+                  "typeSimple": "string",
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": [],
@@ -1583,9 +1231,9 @@
               "parametersOnMethod": [
                 {
                   "name": "id",
-                  "typeAsString": "System.Int32, System.Private.CoreLib",
-                  "type": "System.Int32",
-                  "typeSimple": "number",
+                  "typeAsString": "System.Guid, System.Private.CoreLib",
+                  "type": "System.Guid",
+                  "typeSimple": "string",
                   "isOptional": false,
                   "defaultValue": null
                 }
@@ -1595,8 +1243,8 @@
                   "nameOnMethod": "id",
                   "name": "id",
                   "jsonName": null,
-                  "type": "System.Int32",
-                  "typeSimple": "number",
+                  "type": "System.Guid",
+                  "typeSimple": "string",
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": [],
@@ -1667,6 +1315,261 @@
               },
               "allowAnonymous": false,
               "implementFrom": "HA_ERP.Staffs.IStaffAppService"
+            }
+          }
+        },
+        "OrganizationUnitAppService": {
+          "controllerName": "OrganizationUnit",
+          "controllerGroupName": "OrganizationUnit",
+          "isRemoteService": true,
+          "isIntegrationService": false,
+          "apiVersion": null,
+          "type": "OrganizationUnitAppService",
+          "interfaces": [],
+          "actions": {
+            "GetTreeAsync": {
+              "uniqueName": "GetTreeAsync",
+              "name": "GetTreeAsync",
+              "httpMethod": "GET",
+              "url": "api/app/organization-unit/tree",
+              "supportedVersions": [],
+              "parametersOnMethod": [],
+              "parameters": [],
+              "returnValue": {
+                "type": "System.Collections.Generic.List<HA_ERP.OrganizationUnits.OrganizationUnitTreeDto>",
+                "typeSimple": "[HA_ERP.OrganizationUnits.OrganizationUnitTreeDto]"
+              },
+              "allowAnonymous": null,
+              "implementFrom": "OrganizationUnitAppService"
+            },
+            "CreateAsyncByInput": {
+              "uniqueName": "CreateAsyncByInput",
+              "name": "CreateAsync",
+              "httpMethod": "POST",
+              "url": "api/app/organization-unit",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "input",
+                  "typeAsString": "HA_ERP.OrganizationUnits.CreateOrganizationUnitDto, HA_ERP.Application.Contracts",
+                  "type": "HA_ERP.OrganizationUnits.CreateOrganizationUnitDto",
+                  "typeSimple": "HA_ERP.OrganizationUnits.CreateOrganizationUnitDto",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "input",
+                  "name": "input",
+                  "jsonName": null,
+                  "type": "HA_ERP.OrganizationUnits.CreateOrganizationUnitDto",
+                  "typeSimple": "HA_ERP.OrganizationUnits.CreateOrganizationUnitDto",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "Body",
+                  "descriptorName": ""
+                }
+              ],
+              "returnValue": {
+                "type": "HA_ERP.OrganizationUnits.OrganizationUnitDto",
+                "typeSimple": "HA_ERP.OrganizationUnits.OrganizationUnitDto"
+              },
+              "allowAnonymous": null,
+              "implementFrom": "Volo.Abp.Application.Services.ICreateAppService<HA_ERP.OrganizationUnits.OrganizationUnitDto,HA_ERP.OrganizationUnits.CreateOrganizationUnitDto>"
+            },
+            "UpdateAsyncByIdAndInput": {
+              "uniqueName": "UpdateAsyncByIdAndInput",
+              "name": "UpdateAsync",
+              "httpMethod": "PUT",
+              "url": "api/app/organization-unit/{id}",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "id",
+                  "typeAsString": "System.Guid, System.Private.CoreLib",
+                  "type": "System.Guid",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null
+                },
+                {
+                  "name": "input",
+                  "typeAsString": "HA_ERP.OrganizationUnits.UpdateOrganizationUnitDto, HA_ERP.Application.Contracts",
+                  "type": "HA_ERP.OrganizationUnits.UpdateOrganizationUnitDto",
+                  "typeSimple": "HA_ERP.OrganizationUnits.UpdateOrganizationUnitDto",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "id",
+                  "name": "id",
+                  "jsonName": null,
+                  "type": "System.Guid",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": [],
+                  "bindingSourceId": "Path",
+                  "descriptorName": ""
+                },
+                {
+                  "nameOnMethod": "input",
+                  "name": "input",
+                  "jsonName": null,
+                  "type": "HA_ERP.OrganizationUnits.UpdateOrganizationUnitDto",
+                  "typeSimple": "HA_ERP.OrganizationUnits.UpdateOrganizationUnitDto",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "Body",
+                  "descriptorName": ""
+                }
+              ],
+              "returnValue": {
+                "type": "HA_ERP.OrganizationUnits.OrganizationUnitDto",
+                "typeSimple": "HA_ERP.OrganizationUnits.OrganizationUnitDto"
+              },
+              "allowAnonymous": null,
+              "implementFrom": "Volo.Abp.Application.Services.IUpdateAppService<HA_ERP.OrganizationUnits.OrganizationUnitDto,System.Guid,HA_ERP.OrganizationUnits.UpdateOrganizationUnitDto>"
+            },
+            "DeleteAsyncById": {
+              "uniqueName": "DeleteAsyncById",
+              "name": "DeleteAsync",
+              "httpMethod": "DELETE",
+              "url": "api/app/organization-unit/{id}",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "id",
+                  "typeAsString": "System.Guid, System.Private.CoreLib",
+                  "type": "System.Guid",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "id",
+                  "name": "id",
+                  "jsonName": null,
+                  "type": "System.Guid",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": [],
+                  "bindingSourceId": "Path",
+                  "descriptorName": ""
+                }
+              ],
+              "returnValue": {
+                "type": "System.Void",
+                "typeSimple": "System.Void"
+              },
+              "allowAnonymous": null,
+              "implementFrom": "Volo.Abp.Application.Services.IDeleteAppService<System.Guid>"
+            },
+            "GetAsyncById": {
+              "uniqueName": "GetAsyncById",
+              "name": "GetAsync",
+              "httpMethod": "GET",
+              "url": "api/app/organization-unit/{id}",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "id",
+                  "typeAsString": "System.Guid, System.Private.CoreLib",
+                  "type": "System.Guid",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "id",
+                  "name": "id",
+                  "jsonName": null,
+                  "type": "System.Guid",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": [],
+                  "bindingSourceId": "Path",
+                  "descriptorName": ""
+                }
+              ],
+              "returnValue": {
+                "type": "HA_ERP.OrganizationUnits.OrganizationUnitDto",
+                "typeSimple": "HA_ERP.OrganizationUnits.OrganizationUnitDto"
+              },
+              "allowAnonymous": null,
+              "implementFrom": "Volo.Abp.Application.Services.IReadOnlyAppService<HA_ERP.OrganizationUnits.OrganizationUnitDto,HA_ERP.OrganizationUnits.OrganizationUnitDto,System.Guid,Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto>"
+            },
+            "GetListAsyncByInput": {
+              "uniqueName": "GetListAsyncByInput",
+              "name": "GetListAsync",
+              "httpMethod": "GET",
+              "url": "api/app/organization-unit",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "input",
+                  "typeAsString": "Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto, Volo.Abp.Ddd.Application.Contracts",
+                  "type": "Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto",
+                  "typeSimple": "Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "input",
+                  "name": "Sorting",
+                  "jsonName": null,
+                  "type": "System.String",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "input"
+                },
+                {
+                  "nameOnMethod": "input",
+                  "name": "SkipCount",
+                  "jsonName": null,
+                  "type": "System.Int32",
+                  "typeSimple": "number",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "input"
+                },
+                {
+                  "nameOnMethod": "input",
+                  "name": "MaxResultCount",
+                  "jsonName": null,
+                  "type": "System.Int32",
+                  "typeSimple": "number",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "input"
+                }
+              ],
+              "returnValue": {
+                "type": "Volo.Abp.Application.Dtos.PagedResultDto<HA_ERP.OrganizationUnits.OrganizationUnitDto>",
+                "typeSimple": "Volo.Abp.Application.Dtos.PagedResultDto<HA_ERP.OrganizationUnits.OrganizationUnitDto>"
+              },
+              "allowAnonymous": null,
+              "implementFrom": "Volo.Abp.Application.Services.IReadOnlyAppService<HA_ERP.OrganizationUnits.OrganizationUnitDto,HA_ERP.OrganizationUnits.OrganizationUnitDto,System.Guid,Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto>"
             }
           }
         }
@@ -4315,7 +4218,7 @@
     }
   },
   "types": {
-    "HA_ERP.Organizations.CreateOrganizationDto": {
+    "HA_ERP.OrganizationUnits.CreateOrganizationUnitDto": {
       "baseType": null,
       "isEnum": false,
       "enumNames": null,
@@ -4323,43 +4226,22 @@
       "genericArguments": null,
       "properties": [
         {
-          "name": "Code",
+          "name": "DisplayName",
           "jsonName": null,
           "type": "System.String",
           "typeSimple": "string",
           "isRequired": true,
-          "minLength": 0,
-          "maxLength": 12,
+          "minLength": null,
+          "maxLength": null,
           "minimum": null,
           "maximum": null,
           "regex": null
         },
         {
-          "name": "Name",
+          "name": "ParentId",
           "jsonName": null,
-          "type": "System.String",
-          "typeSimple": "string",
-          "isRequired": true,
-          "minLength": 0,
-          "maxLength": 12,
-          "minimum": null,
-          "maximum": null,
-          "regex": null
-        }
-      ]
-    },
-    "HA_ERP.Organizations.GetListOrganizationDto": {
-      "baseType": "Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto",
-      "isEnum": false,
-      "enumNames": null,
-      "enumValues": null,
-      "genericArguments": null,
-      "properties": [
-        {
-          "name": "Filter",
-          "jsonName": null,
-          "type": "System.String",
-          "typeSimple": "string",
+          "type": "System.Guid?",
+          "typeSimple": "string?",
           "isRequired": false,
           "minLength": null,
           "maxLength": null,
@@ -4369,8 +4251,8 @@
         }
       ]
     },
-    "HA_ERP.Organizations.OrganizationDto": {
-      "baseType": "Volo.Abp.Application.Dtos.EntityDto<System.Int32>",
+    "HA_ERP.OrganizationUnits.OrganizationUnitDto": {
+      "baseType": "Volo.Abp.Application.Dtos.EntityDto<System.Guid>",
       "isEnum": false,
       "enumNames": null,
       "enumValues": null,
@@ -4389,7 +4271,7 @@
           "regex": null
         },
         {
-          "name": "Name",
+          "name": "DisplayName",
           "jsonName": null,
           "type": "System.String",
           "typeSimple": "string",
@@ -4399,10 +4281,34 @@
           "minimum": null,
           "maximum": null,
           "regex": null
+        },
+        {
+          "name": "ParentId",
+          "jsonName": null,
+          "type": "System.Guid?",
+          "typeSimple": "string?",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "ChildrenCount",
+          "jsonName": null,
+          "type": "System.Int32?",
+          "typeSimple": "number?",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
         }
       ]
     },
-    "HA_ERP.Organizations.UpdateOrganizationDto": {
+    "HA_ERP.OrganizationUnits.OrganizationUnitTreeDto": {
       "baseType": null,
       "isEnum": false,
       "enumNames": null,
@@ -4410,25 +4316,82 @@
       "genericArguments": null,
       "properties": [
         {
-          "name": "Code",
+          "name": "Id",
           "jsonName": null,
-          "type": "System.String",
+          "type": "System.Guid",
           "typeSimple": "string",
-          "isRequired": true,
-          "minLength": 0,
-          "maxLength": 12,
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
           "minimum": null,
           "maximum": null,
           "regex": null
         },
         {
-          "name": "Name",
+          "name": "DisplayName",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "ParentId",
+          "jsonName": null,
+          "type": "System.Guid?",
+          "typeSimple": "string?",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "Children",
+          "jsonName": null,
+          "type": "[HA_ERP.OrganizationUnits.OrganizationUnitTreeDto]",
+          "typeSimple": "[HA_ERP.OrganizationUnits.OrganizationUnitTreeDto]",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        }
+      ]
+    },
+    "HA_ERP.OrganizationUnits.UpdateOrganizationUnitDto": {
+      "baseType": null,
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "DisplayName",
           "jsonName": null,
           "type": "System.String",
           "typeSimple": "string",
           "isRequired": true,
-          "minLength": 0,
-          "maxLength": 12,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "ParentId",
+          "jsonName": null,
+          "type": "System.Guid?",
+          "typeSimple": "string?",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
           "minimum": null,
           "maximum": null,
           "regex": null
@@ -4443,11 +4406,11 @@
       "genericArguments": null,
       "properties": [
         {
-          "name": "OrganizationId",
+          "name": "OrganizationUnitId",
           "jsonName": null,
-          "type": "System.Int32",
-          "typeSimple": "number",
-          "isRequired": true,
+          "type": "System.Guid?",
+          "typeSimple": "string?",
+          "isRequired": false,
           "minLength": null,
           "maxLength": null,
           "minimum": null,
@@ -4584,10 +4547,10 @@
       "genericArguments": null,
       "properties": [
         {
-          "name": "OrganizationId",
+          "name": "OrganizationUnitId",
           "jsonName": null,
-          "type": "System.Int32",
-          "typeSimple": "number",
+          "type": "System.Guid?",
+          "typeSimple": "string?",
           "isRequired": false,
           "minLength": null,
           "maxLength": null,
@@ -4758,11 +4721,11 @@
       "genericArguments": null,
       "properties": [
         {
-          "name": "OrganizationId",
+          "name": "OrganizationUnitId",
           "jsonName": null,
-          "type": "System.Int32",
-          "typeSimple": "number",
-          "isRequired": true,
+          "type": "System.Guid?",
+          "typeSimple": "string?",
+          "isRequired": false,
           "minLength": null,
           "maxLength": null,
           "minimum": null,
@@ -4798,7 +4761,7 @@
           "jsonName": null,
           "type": "System.String",
           "typeSimple": "string",
-          "isRequired": true,
+          "isRequired": false,
           "minLength": 0,
           "maxLength": 36,
           "minimum": null,
@@ -4810,7 +4773,7 @@
           "jsonName": null,
           "type": "System.String",
           "typeSimple": "string",
-          "isRequired": true,
+          "isRequired": false,
           "minLength": 0,
           "maxLength": 12,
           "minimum": null,
@@ -4822,7 +4785,7 @@
           "jsonName": null,
           "type": "System.String",
           "typeSimple": "string",
-          "isRequired": true,
+          "isRequired": false,
           "minLength": 0,
           "maxLength": 36,
           "minimum": null,
@@ -4834,7 +4797,7 @@
           "jsonName": null,
           "type": "System.String",
           "typeSimple": "string",
-          "isRequired": true,
+          "isRequired": false,
           "minLength": 0,
           "maxLength": 100,
           "minimum": null,
@@ -4846,7 +4809,7 @@
           "jsonName": null,
           "type": "System.String",
           "typeSimple": "string",
-          "isRequired": true,
+          "isRequired": false,
           "minLength": 0,
           "maxLength": 150,
           "minimum": null,
@@ -4858,7 +4821,7 @@
           "jsonName": null,
           "type": "System.String",
           "typeSimple": "string",
-          "isRequired": true,
+          "isRequired": false,
           "minLength": 0,
           "maxLength": 36,
           "minimum": null,
@@ -4870,7 +4833,7 @@
           "jsonName": null,
           "type": "System.String",
           "typeSimple": "string",
-          "isRequired": true,
+          "isRequired": false,
           "minLength": 0,
           "maxLength": 100,
           "minimum": null,
@@ -4882,7 +4845,7 @@
           "jsonName": null,
           "type": "System.String",
           "typeSimple": "string",
-          "isRequired": true,
+          "isRequired": false,
           "minLength": 0,
           "maxLength": 150,
           "minimum": null,

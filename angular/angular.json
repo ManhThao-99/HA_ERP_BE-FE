@@ -110,6 +110,7 @@
                 "inject": true,
                 "bundleName": "ngx-datatable-material"
               },
+              "node_modules/primeicons/primeicons.css",
               "src/styles.scss"
             ],
             "scripts": []

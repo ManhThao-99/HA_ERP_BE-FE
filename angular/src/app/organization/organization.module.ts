@@ -5,6 +5,8 @@ import { SharedModule } from '../shared/shared.module';
 import { OrganizationRoutingModule } from './organization-routing.module';
 import { OrganizationComponent } from './organization.component';
 
+import { TreeModule } from 'primeng/tree';
+import { ButtonModule } from 'primeng/button';
 
 @NgModule({
   declarations: [
@@ -12,7 +14,10 @@ import { OrganizationComponent } from './organization.component';
   ],
   imports: [
     SharedModule,
-    OrganizationRoutingModule
+    OrganizationRoutingModule,
+    TreeModule,
+    ButtonModule,
+    CommonModule,
   ]
 })
 export class OrganizationModule { }
